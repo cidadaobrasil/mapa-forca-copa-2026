@@ -1,0 +1,1032 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mapa Força 13/06 — Copa do Mundo 2026</title>
+<!-- Open Graph / WhatsApp preview -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://cidadaobrasil.github.io/mapa-forca-copa-2026/">
+<meta property="og:title" content="Mapa Força 13/06 — Copa do Mundo 2026">
+<meta property="og:description" content="Serviço Ordinário — 5ª Cia PM · Policiamento intensificado para o jogo do Brasil na Copa do Mundo FIFA 2026 (19h00)">
+<meta property="og:image" content="https://cidadaobrasil.github.io/mapa-forca-copa-2026/preview.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://cidadaobrasil.github.io/mapa-forca-copa-2026/preview.png">
+<style>
+  :root {
+    --azul:       #002D6E;
+    --azul-mid:   #003F99;
+    --azul-lite:  #E8EFF9;
+    --verde:      #1A5C28;
+    --verde-lite: #E6F2E8;
+    --ouro:       #C8960C;
+    --ouro-lite:  #FFF8E1;
+    --copa:       #009C3B;   /* verde Brasil */
+    --copa-lite:  #E6F8EE;
+    --amarelo-br: #FFDF00;   /* amarelo Brasil */
+    --vermelho:   #C0392B;
+    --ink:        #1A1E2E;
+    --muted:      #5A6278;
+    --border:     #D4DCF0;
+    --bg:         #F2F5FB;
+    --white:      #FFFFFF;
+    --radius:     6px;
+    --shadow:     0 1px 4px rgba(0,0,0,.10);
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: system-ui, -apple-system, 'Segoe UI', Arial, sans-serif;
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 14px;
+    line-height: 1.45;
+    min-height: 100dvh;
+  }
+
+  /* ── HEADER ─────────────────────────── */
+  .header {
+    background: linear-gradient(150deg, #001D52 0%, #002D6E 55%, #003F99 100%);
+    border-bottom: 3px solid var(--ouro);
+    padding: 16px 20px 14px;
+  }
+
+  .header-top {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 10px;
+  }
+
+  .badge {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 38% 38%, #1a3d78, #001640);
+    border: 2px solid var(--ouro);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .badge .b1 { font-size: 9px; font-weight: 900; color: var(--ouro); letter-spacing: 1.2px; }
+  .badge .b2 { font-size: 7px; color: #9bb8dd; margin-top: 1px; letter-spacing: .5px; }
+
+  .header-titles { flex: 1; min-width: 0; }
+  .org-label {
+    font-size: 9px;
+    color: #8fb3d9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 3px;
+  }
+  .op-name {
+    font-size: 22px;
+    font-weight: 900;
+    color: var(--ouro);
+    letter-spacing: 1.5px;
+    line-height: 1;
+  }
+  .op-sub {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+    margin-top: 3px;
+  }
+
+  /* ── COPA BADGE ─────────────────────── */
+  .copa-ribbon {
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(0,156,59,.18);
+    border: 1px solid rgba(0,156,59,.55);
+    border-radius: 6px;
+    padding: 7px 14px;
+  }
+  .copa-flag {
+    font-size: 22px;
+    line-height: 1;
+  }
+  .copa-info { flex: 1; }
+  .copa-title {
+    font-size: 11px;
+    font-weight: 900;
+    color: var(--amarelo-br);
+    text-transform: uppercase;
+    letter-spacing: .8px;
+  }
+  .copa-sub {
+    font-size: 10px;
+    color: rgba(255,255,255,.75);
+    margin-top: 1px;
+  }
+  .copa-hora {
+    font-size: 18px;
+    font-weight: 900;
+    color: var(--amarelo-br);
+    font-variant-numeric: tabular-nums;
+    white-space: nowrap;
+  }
+
+  .chips {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .chip {
+    background: rgba(0,0,0,.30);
+    border: 1px solid rgba(200,150,12,.45);
+    border-radius: 5px;
+    padding: 5px 12px;
+    text-align: center;
+  }
+  .chip .cl { font-size: 9px; font-weight: 700; color: var(--ouro); text-transform: uppercase; letter-spacing: .8px; }
+  .chip .cv { font-size: 14px; font-weight: 900; color: #fff; margin-top: 1px; }
+
+  /* ── INFO BAR ───────────────────────── */
+  .info-bar {
+    background: #001D52;
+    border-bottom: 1px solid var(--ouro);
+    padding: 8px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 20px;
+  }
+  .ib-item { display: flex; gap: 6px; align-items: baseline; }
+  .ib-label { font-size: 9px; font-weight: 700; color: var(--ouro); text-transform: uppercase; letter-spacing: .8px; flex-shrink: 0; }
+  .ib-val   { font-size: 11px; color: #d0dff5; font-weight: 500; }
+
+  /* ── MAIN ───────────────────────────── */
+  .main { padding: 16px 16px 24px; display: flex; flex-direction: column; gap: 16px; }
+
+  /* ── SECTION HEADER ─────────────────── */
+  .sh {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border-radius: var(--radius) var(--radius) 0 0;
+    padding: 8px 12px;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: #fff;
+    background: var(--azul);
+  }
+  .sh.copa-sh  { background: var(--copa); }
+  .sh.noite-sh { background: #0D2140; }
+  .sh.sala-sh  { background: #4A235A; }
+  .sh.obs-sh   { background: #5D2E00; }
+  .sh .icon { font-size: 14px; }
+  .sh .subloc {
+    margin-left: auto;
+    font-size: 9px;
+    font-weight: 500;
+    text-transform: none;
+    letter-spacing: .2px;
+    color: rgba(255,255,255,.7);
+    text-align: right;
+    line-height: 1.3;
+    max-width: 55%;
+  }
+
+  /* ── CRONOGRAMA ─────────────────────── */
+  .crono-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .crono-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .crono-item {
+    background: var(--white);
+    padding: 10px 12px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    border-left: 3px solid var(--azul);
+  }
+  .crono-item.pre-jogo  { border-left-color: var(--copa); }
+  .crono-item.jogo      { border-left-color: var(--amarelo-br); background: #FEFCE8; }
+  .crono-item.pos-jogo  { border-left-color: var(--vermelho); }
+  .crono-item.aliment   { border-left-color: var(--ouro); }
+
+  .crono-seq {
+    font-size: 9px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .crono-label { font-size: 12px; font-weight: 700; color: var(--ink); line-height: 1.25; }
+  .crono-hora  { font-size: 12px; font-weight: 600; color: var(--azul-mid); font-variant-numeric: tabular-nums; }
+  .crono-item.jogo .crono-label { color: #7B5700; }
+  .crono-item.jogo .crono-hora  { color: #9B6A00; }
+
+  /* ── TABELA ─────────────────────────── */
+  .turno-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  /* Desktop table */
+  .eft-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 12.5px;
+  }
+  .eft-table thead tr { background: var(--azul); color: #fff; }
+  .eft-table.copa-th thead tr { background: var(--copa); }
+  .eft-table.noite-th thead tr { background: #0D2140; }
+  .eft-table thead th {
+    padding: 8px 10px;
+    font-size: 9px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+    font-weight: 700;
+    text-align: left;
+    white-space: nowrap;
+  }
+  .eft-table tbody tr:nth-child(even) { background: var(--azul-lite); }
+  .eft-table tbody tr:nth-child(odd)  { background: var(--white); }
+  .eft-table.copa-th tbody tr:nth-child(even) { background: var(--copa-lite); }
+  .eft-table tbody td {
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: middle;
+  }
+
+  /* Badges */
+  .bm {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 9px;
+    font-weight: 800;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: .4px;
+    white-space: nowrap;
+  }
+  .bm-dejem  { background: var(--verde); }
+  .bm-rp     { background: var(--azul-mid); }
+  .bm-valp   { background: #003F80; }
+  .bm-cgp    { background: #5A1E7A; }
+  .bm-delg   { background: #004080; }
+  .bm-sala   { background: #4A235A; }
+  .bm-copa   { background: var(--copa); }
+
+  /* ── DESTAQUE COPA ──────────────────── */
+  .copa-alerta {
+    background: linear-gradient(135deg, #003F15 0%, #005A1E 100%);
+    border: 1px solid rgba(0,156,59,.5);
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    box-shadow: var(--shadow);
+  }
+  .copa-alerta-icon { font-size: 24px; flex-shrink: 0; margin-top: 1px; }
+  .copa-alerta-body { flex: 1; }
+  .copa-alerta-title {
+    font-size: 12px;
+    font-weight: 900;
+    color: var(--amarelo-br);
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    margin-bottom: 6px;
+  }
+  .copa-alerta-text {
+    font-size: 11px;
+    color: rgba(255,255,255,.85);
+    line-height: 1.55;
+  }
+  .copa-alerta-text strong { color: var(--amarelo-br); }
+
+  .copa-alerta.cgp {
+    background: linear-gradient(135deg, #2E0F40 0%, #4A235A 100%);
+    border-color: rgba(122,52,166,.5);
+  }
+  .copa-alerta.cgp .copa-alerta-title,
+  .copa-alerta.cgp .copa-alerta-text strong { color: #E3B8FF; }
+
+  /* ── OBSERVAÇÕES ────────────────────── */
+  .obs-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    border: 1px solid var(--border);
+  }
+
+  .obs-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--border);
+  }
+
+  .obs-item {
+    background: var(--white);
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    border-left: 3px solid #7B3F00;
+  }
+  .obs-item.verde { border-left-color: var(--copa); }
+
+  .obs-item-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+
+  .obs-turno {
+    font-size: 9px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    color: var(--muted);
+  }
+
+  .obs-equipe {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .obs-nota {
+    font-size: 11px;
+    color: var(--muted);
+    font-style: italic;
+    line-height: 1.4;
+    border-top: 1px dashed var(--border);
+    padding-top: 6px;
+    margin-top: 2px;
+  }
+
+  @media (max-width: 500px) {
+    .obs-grid { grid-template-columns: 1fr; }
+  }
+
+  .vtr {
+    display: inline-block;
+    background: #E8EDF8;
+    border: 1px solid #B0BDD8;
+    border-radius: 4px;
+    padding: 2px 8px;
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--azul);
+    font-family: ui-monospace, monospace;
+    letter-spacing: .5px;
+    white-space: nowrap;
+  }
+
+  .efetivo-nomes { font-size: 12.5px; color: var(--ink); }
+  .sep { color: var(--ouro); font-weight: 700; margin: 0 4px; }
+
+  /* ── CARDS MOBILE (substituem a tabela) ─ */
+  .mobile-rows { display: none; }
+
+  .mrow {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-template-rows: auto auto;
+    column-gap: 10px;
+    row-gap: 4px;
+    align-items: center;
+  }
+  .mrow:last-child { border-bottom: none; }
+
+  .mrow-badge { grid-row: 1 / 3; }
+  .mrow-top   { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+  .mrow-horario { font-size: 11px; font-weight: 600; color: var(--azul-mid); }
+  .mrow-nomes { font-size: 12.5px; color: var(--ink); }
+
+  /* ── FOOTER ─────────────────────────── */
+  .footer {
+    background: var(--azul);
+    border-top: 2px solid var(--ouro);
+    padding: 10px 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 6px;
+  }
+  .ft { font-size: 10px; color: #8fb3d9; }
+  .ft strong { color: var(--ouro); }
+  .ft-restrito {
+    font-size: 9px;
+    color: #6080a0;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    background: rgba(0,0,0,.2);
+    padding: 3px 8px;
+    border-radius: 3px;
+    border: 1px solid rgba(200,150,12,.25);
+  }
+
+  /* ── RESPONSIVE ─────────────────────── */
+  @media (max-width: 600px) {
+    body { font-size: 13px; }
+
+    .header { padding: 12px 14px 10px; }
+    .badge  { width: 42px; height: 42px; }
+    .badge .b1 { font-size: 8px; }
+    .op-name { font-size: 18px; }
+    .op-sub  { font-size: 11px; }
+    .chips   { gap: 6px; }
+    .chip    { padding: 4px 10px; }
+
+    .main { padding: 12px 10px 20px; gap: 12px; }
+
+    .sh { flex-wrap: wrap; }
+    .sh .subloc { max-width: 100%; text-align: left; margin-left: 0; margin-top: 2px; width: 100%; }
+
+    .crono-grid { grid-template-columns: 1fr 1fr; }
+
+    /* Esconde tabela, mostra cards */
+    .eft-table { display: none; }
+    .mobile-rows { display: block; }
+
+    .info-bar { padding: 8px 14px; }
+    .footer   { padding: 10px 14px; }
+
+    .copa-hora { font-size: 15px; }
+  }
+
+  @media (max-width: 380px) {
+    .crono-grid { grid-template-columns: 1fr; }
+    .op-name { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="header">
+  <div class="header-top">
+    <div class="badge">
+      <span class="b1">PMESP</span>
+      <span class="b2">2º BPM/I</span>
+    </div>
+    <div class="header-titles">
+      <div class="org-label">Polícia Militar do Estado de São Paulo — 2º BPM/I — 5ª Cia PM</div>
+      <div class="op-name">MAPA FORÇA</div>
+      <div class="op-sub">Serviço Ordinário — Copa do Mundo FIFA 2026</div>
+    </div>
+  </div>
+
+  <!-- Ribbon Copa do Mundo -->
+  <div class="copa-ribbon">
+    <div class="copa-flag">🇧🇷⚽</div>
+    <div class="copa-info">
+      <div class="copa-title">Copa do Mundo FIFA 2026 — Jogo do Brasil</div>
+      <div class="copa-sub">Intensificação do policiamento nos locais de aglomeração — antes, durante e após o jogo</div>
+    </div>
+    <div class="copa-hora">19h00</div>
+  </div>
+
+  <div style="height:10px"></div>
+  <div class="chips">
+    <div class="chip">
+      <div class="cl">Data</div>
+      <div class="cv">13 JUN 2026</div>
+    </div>
+    <div class="chip">
+      <div class="cl">Dia</div>
+      <div class="cv">SÁBADO</div>
+    </div>
+    <div class="chip">
+      <div class="cl">Horário Geral</div>
+      <div class="cv">05h30 – 06h00+</div>
+    </div>
+  </div>
+</header>
+
+<!-- INFO BAR -->
+<div class="info-bar">
+  <div class="ib-item">
+    <span class="ib-label">Missão:</span>
+    <span class="ib-val">Policiamento ordinário com intensificação nos locais de aglomeração antes, durante e após jogo do Brasil — Copa do Mundo FIFA 2026 (19h00)</span>
+  </div>
+  <div class="ib-item">
+    <span class="ib-label">Responsável:</span>
+    <span class="ib-val">Cap PM Josemar — Cmt 5ª Cia PM</span>
+  </div>
+</div>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- ALERTA COPA -->
+  <div class="copa-alerta">
+    <div class="copa-alerta-icon">⚠️</div>
+    <div class="copa-alerta-body">
+      <div class="copa-alerta-title">Ordem Especial — Jogo do Brasil 13/06 às 19h00</div>
+      <div class="copa-alerta-text">
+        Todas as equipes deverão <strong>intensificar o policiamento nos locais conhecidos de aglomeração</strong> (bares, praças, estabelecimentos com telão e pontos de concentração de torcedores) nas três fases da partida:
+        <strong>Pré-jogo (17h00–19h00)</strong>, <strong>Durante o jogo (19h00–21h00)</strong> e <strong>Pós-jogo (21h00–23h00)</strong>.
+        Atenção redobrada para <strong>celebrações de massa, consumo de álcool e possíveis perturbações da ordem</strong>.
+        Equipes <strong>DEJEM e noturnas</strong> estão em regime especial de atenção a partir das 17h30.
+      </div>
+    </div>
+  </div>
+
+  <!-- ALERTA COORDENAÇÃO CGP-5 -->
+  <div class="copa-alerta cgp">
+    <div class="copa-alerta-icon">🛡️</div>
+    <div class="copa-alerta-body">
+      <div class="copa-alerta-title">Coordenação Geral da Operação — CGP-5</div>
+      <div class="copa-alerta-text">
+        O <strong>CGP-5 (I-02503)</strong> deverá <strong>coordenar todo o policiamento</strong> referente à operação do jogo, sob supervisão do <strong>Cmdo DEJEM</strong> e do <strong>CFP</strong>.
+        Compete ao CGP <strong>monitorar a movimentação na Avenida de entrada da cidade</strong> e, conforme a situação, determinar o empenho da viatura DEJEM I-02502 (ver seção "DEJEM — Supervisão e Apoio Copa" abaixo).
+        Durante e após o jogo, o CGP-5 deverá <strong>enviar mensagem via WhatsApp ao Cmt da Cia</strong> informando a situação no município.
+      </div>
+    </div>
+  </div>
+
+  <!-- CRONOGRAMA -->
+  <div class="crono-card">
+    <div class="sh copa-sh">
+      <span class="icon">🕒</span> Cronograma — Fases Copa do Mundo
+    </div>
+    <div class="crono-grid">
+      <div class="crono-item pre-jogo">
+        <span class="crono-seq">Pré-jogo</span>
+        <span class="crono-label">Intensificação Pré-jogo</span>
+        <span class="crono-hora">17h00 – 19h00</span>
+      </div>
+      <div class="crono-item jogo">
+        <span class="crono-seq">⚽ Jogo</span>
+        <span class="crono-label">Partida — Brasil</span>
+        <span class="crono-hora">19h00 – ~21h00</span>
+      </div>
+      <div class="crono-item pos-jogo">
+        <span class="crono-seq">Pós-jogo</span>
+        <span class="crono-label">Policiamento Pós-jogo</span>
+        <span class="crono-hora">21h00 – 23h00</span>
+      </div>
+      <div class="crono-item aliment">
+        <span class="crono-seq">Pausa</span>
+        <span class="crono-label">Alimentação (escalonada)</span>
+        <span class="crono-hora">Conforme escala</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEJEM — SUPERVISÃO E APOIO COPA -->
+  <div class="turno-card">
+    <div class="sh copa-sh">
+      <span class="icon">🛡️</span> DEJEM — Supervisão e Apoio Copa do Mundo
+      <span class="subloc">18h00 às 02h00</span>
+    </div>
+
+    <!-- Desktop -->
+    <table class="eft-table noite-th">
+      <thead>
+        <tr>
+          <th>Modalidade</th>
+          <th>Horário</th>
+          <th>Viatura / Prefixo</th>
+          <th>Efetivo Empregado</th>
+          <th>Obs Copa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bm bm-dejem">DEJEM Sup.</span></td>
+          <td>18h00 – 02h00</td>
+          <td><span class="vtr">I-02516</span></td>
+          <td class="efetivo-nomes">Ten Arcanjo <span class="sep">•</span> Cb Tinen</td>
+          <td style="font-size:11px;color:#6ECC8A;font-weight:700;">⚡ Supervisor — coordenação geral da operação Copa</td>
+        </tr>
+        <tr>
+          <td><span class="bm bm-dejem">Apoio DEJEM</span></td>
+          <td>18h00 – 02h00</td>
+          <td><span class="vtr">I-02502</span></td>
+          <td class="efetivo-nomes">Cb Zaneratto <span class="sep">•</span> Cb Cruz</td>
+          <td style="font-size:11px;color:#6ECC8A;font-weight:700;">⚡ Monitoramento / empenho — Av. entrada da cidade</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile cards -->
+    <div class="mobile-rows">
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-dejem">DEJEM Sup.</span></div>
+        <div class="mrow-top"><span class="vtr">I-02516</span><span class="mrow-horario">18h00 – 02h00</span></div>
+        <div class="mrow-nomes">Ten Arcanjo <span class="sep">•</span> Cb Tinen</div>
+      </div>
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-dejem">Apoio DEJEM</span></div>
+        <div class="mrow-top"><span class="vtr">I-02502</span><span class="mrow-horario">18h00 – 02h00</span></div>
+        <div class="mrow-nomes">Cb Zaneratto <span class="sep">•</span> Cb Cruz</div>
+      </div>
+    </div>
+
+    <!-- Missão detalhada -->
+    <div style="padding:12px 14px; border-top:1px dashed var(--border); font-size:11.5px; color:var(--muted); line-height:1.55;">
+      <strong style="color:var(--ink);">Missão I-02502 — Avenida de entrada da cidade:</strong> o CGP deverá monitorar a movimentação na avenida. Não havendo necessidade de empenho antes, a viatura I-02502 será empenhada na avenida no <strong>mínimo 15 minutos antes do término do jogo</strong>, com <strong>prejuízo de ocorrências</strong>, a fim de evitar aglomerações e badernas. Caso necessário, deslocar também equipe dos GPs para apoiar em Guararapes.
+    </div>
+  </div>
+
+  <!-- TURNO DIURNO -->
+  <div class="turno-card">
+    <div class="sh copa-sh">
+      <span class="icon">☀️</span> Turno Diurno
+      <span class="subloc">05h30 às 18h00</span>
+    </div>
+
+    <!-- Desktop -->
+    <table class="eft-table">
+      <thead>
+        <tr>
+          <th>Modalidade</th>
+          <th>Horário</th>
+          <th>Viatura / Prefixo</th>
+          <th>Efetivo Empregado</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bm bm-rp">Gpes · RP SV1</span></td>
+          <td>05h30 – 18h00</td>
+          <td><span class="vtr">17-563</span></td>
+          <td class="efetivo-nomes">Cb Pereira <span class="sep">•</span> Cb Gonçalves</td>
+        </tr>
+        <tr>
+          <td><span class="bm bm-valp">Valp · RP SV1</span></td>
+          <td>05h30 – 18h00</td>
+          <td><span class="vtr">17-453</span></td>
+          <td class="efetivo-nomes">Cb Guilherme <span class="sep">•</span> Cb Carvalho</td>
+        </tr>
+        <tr>
+          <td><span class="bm bm-rp">1º e 2º GP SV1</span></td>
+          <td>05h30 – 18h00</td>
+          <td><span class="vtr">I-02505</span></td>
+          <td class="efetivo-nomes">Cb Ataídes <span class="sep">•</span> Cb Cruz</td>
+        </tr>
+        <tr>
+          <td><span class="bm bm-cgp">CGP5 · SV1</span></td>
+          <td>05h30 – 18h00</td>
+          <td><span class="vtr">I-02503</span></td>
+          <td class="efetivo-nomes">Sgt Willians <span class="sep">•</span> Cb Celso Roberto</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile cards -->
+    <div class="mobile-rows">
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-rp">Gpes RP</span></div>
+        <div class="mrow-top"><span class="vtr">17-563</span><span class="mrow-horario">05h30 – 18h00</span></div>
+        <div class="mrow-nomes">Cb Pereira <span class="sep">•</span> Cb Gonçalves</div>
+      </div>
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-valp">Valp RP</span></div>
+        <div class="mrow-top"><span class="vtr">17-453</span><span class="mrow-horario">05h30 – 18h00</span></div>
+        <div class="mrow-nomes">Cb Guilherme <span class="sep">•</span> Cb Carvalho</div>
+      </div>
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-rp">1º/2º GP</span></div>
+        <div class="mrow-top"><span class="vtr">I-02505</span><span class="mrow-horario">05h30 – 18h00</span></div>
+        <div class="mrow-nomes">Cb Ataídes <span class="sep">•</span> Cb Cruz</div>
+      </div>
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-cgp">CGP5</span></div>
+        <div class="mrow-top"><span class="vtr">I-02503</span><span class="mrow-horario">05h30 – 18h00</span></div>
+        <div class="mrow-nomes">Sgt Willians <span class="sep">•</span> Cb Celso Roberto</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELEGADA DIURNO -->
+  <div class="turno-card">
+    <div class="sh" style="background:#344060">
+      <span class="icon">🚔</span> Delegada — Turno Diurno
+      <span class="subloc">Qtr 12h00 às 20h00</span>
+    </div>
+    <table class="eft-table">
+      <thead>
+        <tr>
+          <th>Modalidade</th>
+          <th>Horário</th>
+          <th>Viatura / Prefixo</th>
+          <th>Efetivo Empregado</th>
+          <th>Obs Copa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bm bm-delg">Delegada</span></td>
+          <td>Qtr 12h00 – 20h00</td>
+          <td><span class="vtr">I-02560</span></td>
+          <td class="efetivo-nomes">Subten Teixeira <span class="sep">•</span> Cb Silvana</td>
+          <td style="font-size:11px;color:var(--copa);font-weight:700;">Fiscalização Prefeitura → apoio show (até 20h00)</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mobile-rows">
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-delg">Delegada</span></div>
+        <div class="mrow-top"><span class="vtr">I-02560</span><span class="mrow-horario">Qtr 12h00 – 20h00</span></div>
+        <div class="mrow-nomes">Subten Teixeira <span class="sep">•</span> Cb Silvana</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALA OPERAÇÕES DIURNO -->
+  <div class="turno-card">
+    <div class="sh sala-sh">
+      <span class="icon">📡</span> Sala de Operações — Turno Diurno
+      <span class="subloc">05h30 às 18h00</span>
+    </div>
+    <table class="eft-table">
+      <thead>
+        <tr>
+          <th>Função</th>
+          <th>Horário</th>
+          <th>Efetivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bm bm-sala">Sala Ops</span></td>
+          <td>05h30 – 18h00</td>
+          <td class="efetivo-nomes">Cb Sara</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mobile-rows">
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-sala">Sala Ops</span></div>
+        <div class="mrow-top"><span class="mrow-horario">05h30 – 18h00</span></div>
+        <div class="mrow-nomes">Cb Sara</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TURNO NOTURNO -->
+  <div class="turno-card">
+    <div class="sh noite-sh">
+      <span class="icon">🌙</span> Turno Noturno — Serviço Ordinário
+      <span class="subloc">17h30 às 06h00 — ⚽ ATENÇÃO COPA</span>
+    </div>
+
+    <!-- Desktop -->
+    <table class="eft-table noite-th">
+      <thead>
+        <tr>
+          <th>Modalidade</th>
+          <th>Horário</th>
+          <th>Viatura / Prefixo</th>
+          <th>Efetivo Empregado</th>
+          <th>Obs Copa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bm bm-rp">Gpes · RP SV2</span></td>
+          <td>17h30 – 06h00</td>
+          <td><span class="vtr">17-563</span></td>
+          <td class="efetivo-nomes">Cb De Souza <span class="sep">•</span> Cb Augusto</td>
+          <td style="font-size:11px;color:#6ECC8A;font-weight:700;">Aglomeração 17h30–23h</td>
+        </tr>
+        <tr>
+          <td><span class="bm bm-valp">Valp · RP SV2</span></td>
+          <td>17h30 – 06h00</td>
+          <td><span class="vtr">17-453</span></td>
+          <td class="efetivo-nomes">Cb Mendes <span class="sep">•</span> Sd Caroli</td>
+          <td style="font-size:11px;color:#6ECC8A;font-weight:700;">Aglomeração 17h30–23h</td>
+        </tr>
+        <tr>
+          <td><span class="bm bm-rp">1º e 2º GP SV2</span></td>
+          <td>17h30 – 06h00</td>
+          <td><span class="vtr">I-02505</span></td>
+          <td class="efetivo-nomes">Cb Leônidas <span class="sep">•</span> Cb Afonso</td>
+          <td style="font-size:11px;color:#6ECC8A;font-weight:700;">Aglomeração 17h30–23h</td>
+        </tr>
+        <tr>
+          <td><span class="bm bm-cgp">CGP5 · SV2</span></td>
+          <td>17h30 – 06h00</td>
+          <td><span class="vtr">I-02503</span></td>
+          <td class="efetivo-nomes">Subten Savério <span class="sep">•</span> Cb Luciano</td>
+          <td style="font-size:11px;color:#6ECC8A;font-weight:700;">Aglomeração 17h30–23h</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Mobile cards -->
+    <div class="mobile-rows">
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-rp">Gpes RP</span></div>
+        <div class="mrow-top"><span class="vtr">17-563</span><span class="mrow-horario">17h30 – 06h00</span></div>
+        <div class="mrow-nomes">Cb De Souza <span class="sep">•</span> Cb Augusto</div>
+      </div>
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-valp">Valp RP</span></div>
+        <div class="mrow-top"><span class="vtr">17-453</span><span class="mrow-horario">17h30 – 06h00</span></div>
+        <div class="mrow-nomes">Cb Mendes <span class="sep">•</span> Sd Caroli</div>
+      </div>
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-rp">1º/2º GP</span></div>
+        <div class="mrow-top"><span class="vtr">I-02505</span><span class="mrow-horario">17h30 – 06h00</span></div>
+        <div class="mrow-nomes">Cb Leônidas <span class="sep">•</span> Cb Afonso</div>
+      </div>
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-cgp">CGP5</span></div>
+        <div class="mrow-top"><span class="vtr">I-02503</span><span class="mrow-horario">17h30 – 06h00</span></div>
+        <div class="mrow-nomes">Subten Savério <span class="sep">•</span> Cb Luciano</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELEGADA NOTURNO -->
+  <div class="turno-card">
+    <div class="sh" style="background:#1A3055">
+      <span class="icon">🚔</span> Delegada / Apoio — Turno Noturno
+      <span class="subloc">Múltiplos horários</span>
+    </div>
+    <table class="eft-table noite-th">
+      <thead>
+        <tr>
+          <th>Modalidade</th>
+          <th>Horário</th>
+          <th>Viatura / Prefixo</th>
+          <th>Efetivo Empregado</th>
+          <th>Obs Copa</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bm bm-delg">Delegada</span></td>
+          <td>Qtr 12h00 – 20h00</td>
+          <td><span class="vtr">I-02560</span></td>
+          <td class="efetivo-nomes">Subten Teixeira <span class="sep">•</span> Cb Silvana</td>
+          <td style="font-size:11px;color:#6ECC8A;font-weight:700;">⚡ Fiscalização Prefeitura → apoio show (até 20h00)</td>
+        </tr>
+        <tr>
+          <td><span class="bm bm-delg">Delegada</span></td>
+          <td>Qtr 15h55 – 23h55</td>
+          <td><span class="vtr">I-02540</span></td>
+          <td class="efetivo-nomes">Cb Ademir <span class="sep">•</span> Cb Cleonice <span class="sep">•</span> Cb Emerson <span class="sep">•</span> Sd Matheus</td>
+          <td style="font-size:11px;color:#6ECC8A;font-weight:700;">⚡ PE Prefeitura — estacionada o turno todo</td>
+        </tr>
+        <tr>
+          <td><span class="bm bm-valp">Delegada VALP.</span></td>
+          <td>Qtr 18h05 – 02h05</td>
+          <td><span class="vtr">I-02509</span></td>
+          <td class="efetivo-nomes">Cb Trindade <span class="sep">•</span> Cb Teresa</td>
+          <td style="font-size:11px;color:#6ECC8A;font-weight:700;">⚡ Empenho c/ prejuízo — Av. entrada (Valparaíso)</td>
+        </tr>
+        <tr>
+          <td><span class="bm bm-rp">Apoio VALP.</span></td>
+          <td>17h30 – 06h00</td>
+          <td><span class="vtr">17-607</span></td>
+          <td class="efetivo-nomes">Cb Ubiratã <span class="sep">•</span> Cb G. Bisson</td>
+          <td style="font-size:11px;color:#6ECC8A;font-weight:700;">Aglomeração Valparaíso</td>
+        </tr>
+      </tbody>
+    </table>
+    <!-- Mobile cards -->
+    <div class="mobile-rows">
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-delg">Delegada</span></div>
+        <div class="mrow-top"><span class="vtr">I-02560</span><span class="mrow-horario">Qtr 12h00 – 20h00</span></div>
+        <div class="mrow-nomes">Subten Teixeira <span class="sep">•</span> Cb Silvana</div>
+      </div>
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-delg">Delegada</span></div>
+        <div class="mrow-top"><span class="vtr">I-02540</span><span class="mrow-horario">Qtr 15h55 – 23h55</span></div>
+        <div class="mrow-nomes">Cb Ademir <span class="sep">•</span> Cb Cleonice <span class="sep">•</span> Cb Emerson <span class="sep">•</span> Sd Matheus</div>
+      </div>
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-valp">Del. VALP.</span></div>
+        <div class="mrow-top"><span class="vtr">I-02509</span><span class="mrow-horario">Qtr 18h05 – 02h05</span></div>
+        <div class="mrow-nomes">Cb Trindade <span class="sep">•</span> Cb Teresa</div>
+      </div>
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-rp">Ap. VALP.</span></div>
+        <div class="mrow-top"><span class="vtr">17-607</span><span class="mrow-horario">17h30 – 06h00</span></div>
+        <div class="mrow-nomes">Cb Ubiratã <span class="sep">•</span> Cb G. Bisson</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALA OPERAÇÕES NOTURNO -->
+  <div class="turno-card">
+    <div class="sh sala-sh">
+      <span class="icon">📡</span> Sala de Operações — Turno Noturno
+      <span class="subloc">17h30 às 06h00</span>
+    </div>
+    <table class="eft-table">
+      <thead>
+        <tr>
+          <th>Função</th>
+          <th>Horário</th>
+          <th>Efetivo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="bm bm-sala">Sala Ops</span></td>
+          <td>17h30 – 06h00</td>
+          <td class="efetivo-nomes">Cb Leme</td>
+        </tr>
+      </tbody>
+    </table>
+    <div class="mobile-rows">
+      <div class="mrow">
+        <div class="mrow-badge"><span class="bm bm-sala">Sala Ops</span></div>
+        <div class="mrow-top"><span class="mrow-horario">17h30 – 06h00</span></div>
+        <div class="mrow-nomes">Cb Leme</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- OBSERVAÇÕES COPA -->
+  <div class="obs-card">
+    <div class="sh copa-sh">
+      <span class="icon">📋</span> Observações Especiais — Copa do Mundo 13/06
+    </div>
+    <div class="obs-grid">
+      <div class="obs-item verde">
+        <div class="obs-item-title">
+          <span class="bm bm-copa">Pré-jogo</span>
+          <span class="obs-turno">⏰ 17h00 – 19h00</span>
+        </div>
+        <div class="obs-equipe">Todas as equipes diurnas e noturnas</div>
+        <div class="obs-nota">Varredura preventiva nos locais de aglomeração conhecidos (bares, praças, estabelecimentos com telão). Visibilidade policial máxima para inibir desordens e consumo excessivo de bebida alcoólica.</div>
+      </div>
+      <div class="obs-item verde">
+        <div class="obs-item-title">
+          <span class="bm bm-dejem">Durante</span>
+          <span class="obs-turno">⚽ 19h00 – ~21h00</span>
+        </div>
+        <div class="obs-equipe">DEJEM Sup. (I-02516) + Apoio (I-02502) + Equipes Noturnas</div>
+        <div class="obs-nota">Equipes noturnas em posicionamento estratégico nos pontos de aglomeração, monitorando consumo de álcool, perturbação da ordem e risco de confronto entre torcedores. I-02516 atua como supervisor geral da operação (18h–02h); CGP-5 envia atualização via WhatsApp ao Cmt da Cia sobre a situação durante o jogo.</div>
+      </div>
+      <div class="obs-item">
+        <div class="obs-item-title">
+          <span class="bm" style="background:var(--vermelho)">Pós-jogo</span>
+          <span class="obs-turno">🔴 21h00 – 23h00</span>
+        </div>
+        <div class="obs-equipe">Redobrar atenção — Delegada Qtr 15h55 até 23h55</div>
+        <div class="obs-nota">Fase crítica de perturbações. Equipe I-02540 (Cb Ademir, Cb Cleonice, Cb Emerson, Sd Matheus) com serviço até 23h55, cobrindo o período pós-jogo integralmente. Viatura em PE próximo à Prefeitura Municipal de Guararapes (local de transmissão do jogo e show promovido pela Prefeitura), estacionada durante todo o turno; se necessário, a equipe se reveza a pé até a sede da Cia, ao lado. Presença ostensiva nos pontos sensíveis.</div>
+      </div>
+      <div class="obs-item">
+        <div class="obs-item-title">
+          <span class="bm bm-valp">VALP.</span>
+          <span class="obs-turno">🌙 18h05 – 02h05</span>
+        </div>
+        <div class="obs-equipe">Del. VALP. I-02509 · Apoio 17-607</div>
+        <div class="obs-nota">Valparaíso conta com Delegada própria (I-02509), que também deverá ser empenhada com prejuízo de ocorrências na Avenida de entrada da cidade, a fim de evitar aglomerações. Equipes orientadas para locais de concentração de torcedores no município.</div>
+      </div>
+      <div class="obs-item verde" style="grid-column: 1 / -1;">
+        <div class="obs-item-title">
+          <span class="bm" style="background:var(--ouro)">Alimentação</span>
+          <span class="obs-turno">🍽️ Conforme escala</span>
+        </div>
+        <div class="obs-equipe">Refeições escalonadas — todas as equipes</div>
+        <div class="obs-nota">As refeições deverão ser realizadas preferencialmente antes do término do jogo ou somente após encerrada a movimentação dos torcedores pelas cidades, evitando desguarnecer os pontos de aglomeração nos momentos críticos.</div>
+      </div>
+    </div>
+  </div>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="ft"><strong>2º BPM/I – 5ª Cia PM</strong> &nbsp;|&nbsp; Guararapes / SP</div>
+  <div class="ft">Mapa Força — 13 JUN 2026 (Sábado) &nbsp;|&nbsp; Copa do Mundo FIFA 2026 — Jogo do Brasil 19h00</div>
+  <div class="ft-restrito">Uso Restrito</div>
+</footer>
+
+</body>
+</html>
